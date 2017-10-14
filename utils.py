@@ -10,3 +10,10 @@ def prepare_file(source_path, target_path):
         counter += 1
     f_source.close()
     f_target.close()
+
+def print_results(text):
+    print(text)
+    path = 'docs/results.txt'
+    f = open(path, 'a')
+    f.write(text)
+    f.close()
