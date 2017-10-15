@@ -1,12 +1,12 @@
 Experiment #1
 Training percentage = 60%
-Dicision Tree Classifier accuracy = 95.00%
+Dicision Tree Classifier accuracy = 88.33%
 Randrom Forest Classifier accuracy = 96.67%
 
 Experiment #2
 Training percentage = 70%
-Dicision Tree Classifier accuracy = 95.56%
-Randrom Forest Classifier accuracy = 95.56%
+Dicision Tree Classifier accuracy = 88.89%
+Randrom Forest Classifier accuracy = 91.11%
 
 Experiment #3
 Training percentage = 80%
