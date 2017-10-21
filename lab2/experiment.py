@@ -14,7 +14,7 @@ class Experiment:
 
     def print_results(self, dtc_accuracy, rfc_accuracy):
         text = 'Experiment #{}\n' \
-               'Training percentage = {:0.0f}%\n' \
+               'Training size = {:0.0f}%\n' \
                'Dicision Tree Classifier accuracy = {:0.2f}%\n' \
                'Randrom Forest Classifier accuracy = {:0.2f}%\n\n'.format(self.num,
                                                                           self.data.train_size * 100,
