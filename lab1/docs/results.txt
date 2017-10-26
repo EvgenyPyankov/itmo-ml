@@ -1,0 +1,6 @@
+Lab #1
+Sklearn Naive Bayes classifier accuracy = 0.9556%
+My Naive Bayes classifier accuracy = 0.9556%
+
+Sklearn K Nearest Neighbours classifier accuracy = 0.9333%
+My K Nearest Neighbours classifier accuracy = 0.9778%

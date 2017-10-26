@@ -60,10 +60,11 @@ class NBClassifier():
                 best_class = class_name
         return best_class
 
-    def predict(self, test_x):
+    def predict(self, data_x):
         if (self.summaries == None):
-            raise Exception("This NBCLassifier instance is not fitted yet. Call 'fit' with appropriate arguments before using this method.")
+            raise Exception(
+                "This NBCLassifier instance is not fitted yet. Call 'fit' with appropriate arguments before using this method.")
         predictions = []
-        for x in test_x:
+        for x in data_x:
             predictions.append(self.predict_one(self.summaries, x))
         return predictions
