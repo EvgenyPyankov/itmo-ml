@@ -7,8 +7,8 @@ from sklearn.naive_bayes import GaussianNB
 
 from data import Data
 
-# TODO: 100
-kFold = cross_validation.KFold(n=100, random_state=50, shuffle=True)
+csv = pnd.read_csv('../data/banknote.csv')
+kFold = cross_validation.KFold(n=len(csv), random_state=50, shuffle=True)
 gnb = GaussianNB()
 lda = LDA()
 
@@ -25,10 +25,10 @@ def classification_accuracy(X, y):
 
 def logarithmic_loss(X, y):
     scores = cross_val_score(gnb, X, y, cv=kFold, scoring='neg_log_loss')
-    print("log_loss for GaussianNB: %0.3f (%0.3f)" % (scores.mean(), scores.std()))
+    print("Logarithmic loss for GaussianNB: %0.3f (%0.3f)" % (scores.mean(), scores.std()))
 
     scores = cross_val_score(lda, X, y, cv=kFold, scoring='neg_log_loss')
-    print("log_loss for LDA: %0.3f (%0.3f)" % (scores.mean(), scores.std()))
+    print("Logarithmic loss for LDA: %0.3f (%0.3f)" % (scores.mean(), scores.std()))
 
 
 def area_under_roc_curve(X, y):
@@ -54,26 +54,25 @@ def confusion_matrix(test_y, gnb_predict, lda_predict):
 def classification_report(test_y, gnb_predict, lda_predict):
     from sklearn.metrics import classification_report
     gnb_report = classification_report(test_y, gnb_predict)
-    print('Classification report for GaussianNB')
+    print('Classification report for GaussianNB:')
     print(gnb_report)
 
     lda_report = classification_report(test_y, lda_predict)
-    print('Classification report for LDA')
+    print('Classification report for LDA:')
     print(lda_report)
 
 
 def main():
-    csv = pnd.read_csv('../data/iris_bi.csv')
-    data = Data(csv, 0.9)
+    data = Data(csv, 0.7)
 
-    X = csv.values[:, 0: -1]  # атрибуты
+    X = csv.values[:, 0: -1]
     y = (csv.values[:, -1]).astype(np.int, copy=False)
 
     gnb.fit(data.train_x, data.train_y)
     gnb_predict = gnb.predict(data.test_x)
 
     lda.fit(data.train_x, data.train_y)
-    lda_predict = gnb.predict(data.test_x)
+    lda_predict = lda.predict(data.test_x)
 
     classification_accuracy(X, y)
     logarithmic_loss(X, y)
