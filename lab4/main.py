@@ -57,8 +57,7 @@ def test_kernel_functions(X, y):
         plt.yticks(())
         plt.title(titles[i])
         pred = clf.predict(X)
-        print('Accuracy for', titles[i], ':')
-        print('{:.2%}'.format(metrics.accuracy_score(y, pred)))
+        print('Accuracy for {}: {:.2%}'.format(titles[i], metrics.accuracy_score(y, pred)))
     plt.show()
 
 
@@ -70,10 +69,10 @@ def test_svc(X, y):
 
     xx, yy = get_xx_yy(X)
 
-    titles = ['rbf C=1',
-              'rbf C=100',
-              'rbf C=10000',
-              'rbf C=100000']
+    titles = ['rbf C = 1',
+              'rbf C = 100',
+              'rbf C = 10000',
+              'rbf C = 100000']
 
     for i, clf in enumerate((rbf_svc_c1, rbf_svc_c100, rbf_svc_c10000, rbf_svc_c100000)):
         plt.subplot(2, 2, i + 1)
@@ -84,16 +83,15 @@ def test_svc(X, y):
         plt.contourf(xx, yy, Z, cmap=plt.cm.coolwarm, alpha=0.8)
 
         plt.scatter(X[:, 0], X[:, 1], c=y, cmap=plt.cm.coolwarm)
-        plt.xlabel('VarianceOWTI ')
-        plt.ylabel('SkewnessOWTI')
+        plt.xlabel('Sepal length ')
+        plt.ylabel('Petal width')
         plt.xlim(xx.min(), xx.max())
         plt.ylim(yy.min(), yy.max())
         plt.xticks(())
         plt.yticks(())
         plt.title(titles[i])
         pred = clf.predict(X)
-        print('Точность классификации для', titles[i], ':')
-        print('{:.2%}'.format(metrics.accuracy_score(y, pred)))
+        print('Accuracy for {}: {:.2%}'.format(titles[i], metrics.accuracy_score(y, pred)))
 
     plt.show()
 
@@ -106,10 +104,10 @@ def test_gamma(X, y):
 
     xx, yy = get_xx_yy(X)
 
-    titles = ['rbf gamma=0.1',
-              'rbf gamma=10',
-              'rbf gamma=100',
-              'rbf gamma=1000']
+    titles = ['rbf gamma = 0.1',
+              'rbf gamma = 10',
+              'rbf gamma = 100',
+              'rbf gamma = 1000']
 
     for i, clf in enumerate((rbf_svc_g01, rbf_svc_g10, rbf_svc_g100, rbf_svc_g1000)):
         plt.subplot(2, 2, i + 1)
@@ -127,8 +125,7 @@ def test_gamma(X, y):
         plt.yticks(())
         plt.title(titles[i])
         pred = clf.predict(X)
-        print('Accuracy for', titles[i], ':')
-        print('{:.2%}'.format(metrics.accuracy_score(y, pred)))
+        print('Accuracy for {}: {:.2%}'.format(titles[i], metrics.accuracy_score(y, pred)))
 
     plt.show()
 
@@ -142,8 +139,8 @@ def main():
     y = replace_classes(y)
 
     test_kernel_functions(X, y)
-    # test_svc(X, y)
-    # test_gamma(X, y)
+    test_svc(X, y)
+    test_gamma(X, y)
 
 
 main()
