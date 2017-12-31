@@ -7,6 +7,7 @@ from sklearn.naive_bayes import GaussianNB
 
 from data import Data
 
+# Выберем датасет, содержащий только бинарный ответ - ноль или один
 csv = pnd.read_csv('../data/banknote.csv')
 kFold = cross_validation.KFold(n=len(csv), random_state=50, shuffle=True)
 gnb = GaussianNB()
